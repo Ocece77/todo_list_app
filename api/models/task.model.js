@@ -12,13 +12,8 @@ const taskSchema =  mongoose.Schema({
     required: true
   },
 
-  date:{
-    type: String,
-    required: true
-  },
-
 },
-{Timestamp: true}
+{ timestamps: true }
 )
 
 const Task = mongoose.model("Task" , taskSchema)

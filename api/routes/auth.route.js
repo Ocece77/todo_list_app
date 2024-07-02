@@ -1,5 +1,10 @@
 import express from 'express'
+import { login, sign } from '../controllers/auth.controller.js'
+import { authMiddleware } from '../middleware/auth.js'
 
-const router = express.Router()
+const authRoutes = express.Router()
 
-router.get("/login" )
+authRoutes.get("/login" , login )
+authRoutes.post("/sign"  , sign )
+
+export default authRoutes
