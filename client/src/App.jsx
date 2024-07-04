@@ -1,12 +1,12 @@
 import {Routes , Route , Outlet} from 'react-router-dom'
-import { Home } from './public_page/Home'
-import { Login } from './public_page/Login'
-import { Sign } from './public_page/Sign'
-import { Error } from './public_page/Error'
-import { PrivateRoute } from './components/PrivateRoute'
-import { Dashboard } from './private_page/Dashboard'
-import { NavDashboard } from './components/NavDashboard'
-import { Navbar } from './components/Navbar'
+import  Home  from './public_page/Home'
+import  Login  from './public_page/Login'
+import  Sign  from './public_page/Sign'
+import  Error  from './public_page/Error'
+import  PrivateRoute  from './components/PrivateRoute'
+import  Dashboard  from './private_page/Dashboard'
+import  NavDashboard  from './components/NavDashboard'
+import  Navbar  from './components/Navbar'
 
 
 const PublicLayout = () => (
@@ -24,7 +24,7 @@ const PrivateLayout = () => (
 );
 
 
-export const App = () => {
+const App = () => {
 
 
   return (
@@ -32,17 +32,19 @@ export const App = () => {
     <Routes>
 
       {/*Public routes */}
-      <Route element={<PublicLayout/>}/>
-          <Route index element={<Home/>}>
+      <Route element={<PublicLayout/>}>
+          <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/sign" element={<Sign/>}/>
           <Route path="*" element={<Error/>}/>
+          <Route path="/dashboard"  element={<Dashboard />}/>
+
       </Route>
 
       {/*Privates routes */}
         <Route element={<PrivateRoute/>}>
-          <Route path="/dashboard" element={<PrivateLayout />}>
-            <Route index element={<Dashboard />}/>
+          <Route element={<PrivateLayout />}>
+          <Route path="/dashboard"  element={<Dashboard />}/>
           </Route>
         </Route>
 
@@ -53,3 +55,6 @@ export const App = () => {
 }
 
 
+
+
+export default App

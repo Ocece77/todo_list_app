@@ -12,6 +12,19 @@ const taskSchema =  mongoose.Schema({
     required: true
   },
 
+  date:{
+    type: String,
+    required: true
+  },
+  completed:{
+    type:Boolean,
+    required: true
+  },
+  
+  isPinned:{
+    type:Boolean
+  }
+
 },
 { timestamps: true }
 )
