@@ -23,6 +23,11 @@ const taskSchema =  mongoose.Schema({
   
   isPinned:{
     type:Boolean
+  },
+  
+  userId:{
+    type:String, 
+    required:true
   }
 
 },

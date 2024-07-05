@@ -58,7 +58,7 @@ const NavDashboard =()=>{
             </button>
       </div>
 
-      <div className={`${openBar ? 'w-full' : "-translate-x-full"} lg:translate-x-0 fixed z-10 p-10 bg-gray-50 lg:w-1/3 xl:w-1/4 h-full transition-all overflow-scroll`}>
+      <div className={`${openBar ? 'w-full' : "-translate-x-full"} lg:translate-x-0 fixed z-10 px-2 py-10 bg-gray-50 lg:w-1/3 xl:w-1/4 h-full transition-all overflow-scroll`}>
 
           <div className="flex flex-col h-full">
 
@@ -81,7 +81,7 @@ const NavDashboard =()=>{
               <div className="flex flex-col gap-4 basis-1/2 mt-5 p-2 md:p-16 lg:p-1">
 
                   {/*link to see all task*/}
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between px-4">
                   <p className="text-2xl">Weelky Pinned</p>
                   <Link className="text-amber-400 hover:underline">View All</Link>
                 </div>
@@ -134,12 +134,12 @@ const NavDashboard =()=>{
               <div className="flex w-full basis-2/6 mt-3" >
                 <div className="w-full p-2 md:p-16 lg:p-5 flex flex-col gap-8">
 
-                  <div className="flex justify-between items-center ">
+                  <div className="flex justify-between items-center px-4 ">
                     <p className="text-2xl font-light">{d.getFullYear()}</p>
                     <p className="text-amber-400 font-bold">3 days</p>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 w-full  h-full">
+                  <div className="grid grid-cols-1  gap-2 w-full  h-full">
                     { calendar.map((date,index)=>(
                         <div key={index} className=" flex flex-col  gap-8 h-full w-full p-5 bg-white shadow-md">
                               <p className="rounded-lg font-bold p-1 text-white bg-amber-400 text-2xl">{date.day}</p>
@@ -158,8 +158,7 @@ const NavDashboard =()=>{
               </div>
 
           </div>
-            
-            
+                       
         
       </div>
 

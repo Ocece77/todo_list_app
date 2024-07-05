@@ -29,6 +29,7 @@ const App = () => {
 
   return (
     <>
+ 
     <Routes>
 
       {/*Public routes */}
@@ -37,14 +38,12 @@ const App = () => {
           <Route path="/login" element={<Login/>}/>
           <Route path="/sign" element={<Sign/>}/>
           <Route path="*" element={<Error/>}/>
-          <Route path="/dashboard"  element={<Dashboard />}/>
-
       </Route>
 
       {/*Privates routes */}
         <Route element={<PrivateRoute/>}>
-          <Route element={<PrivateLayout />}>
-          <Route path="/dashboard"  element={<Dashboard />}/>
+          <Route path="/dashboard" element={<PrivateLayout />}>
+            <Route index element={<Dashboard />}/>
           </Route>
         </Route>
 

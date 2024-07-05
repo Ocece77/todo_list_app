@@ -35,14 +35,13 @@ import { useEffect, useState } from "react"
   return(
     <>
 
-    <div className="basis-1/5 fixed lg:relative lg:hidden  top-2 right-0 p-8">
-
+    <div className="basis-1/5 fixed  lg:relative lg:hidden  top-2 right-0 p-8">
           <p className="font-bold ">User Name</p>
           <p className="text-sm text-amber-600 hover:underline">Settings</p>
     </div>
 
 
-     <div className="hidden lg:flex lg:fixed top-5 bottom-5 bg-amber-400 rounded-3xl w-1/5  flex-col items-end gap-10 ">
+     <div className="hidden lg:flex lg:fixed top-5 bottom-5 right-3 bg-amber-400 rounded-3xl w-1/5  flex-col items-end gap-10 ">
 
         {/*Name */}
         <div className="basis-1/5 text-end w-full h-full p-8">
@@ -64,13 +63,13 @@ import { useEffect, useState } from "react"
 
         {/*Today quotes */}
         <div className="basis-2/5 self-center w-full px-2 ">
-          <div className="flex flex-col gap-5 h-full bg-amber-100 rounded-2xl shadow-md py-10 px-7 ">
+          <div className="flex flex-col gap-5 h-72 bg-amber-100 rounded-2xl shadow-md py-6 px-4 ">
              <h1 className="text-2xl font-bold">Quotes about Hapiness ✨ </h1>
 
-              <div className="flex flex-col gap-5">
+              <blockquote className="flex flex-col gap-5">
                 <em >&quot;{ quote[1] }&quot;</em>
-                <blockquote className="font-bold text-end" >-{ quote[0] }</blockquote>
-              </div>
+                <p className="font-bold text-end" >-{ quote[0] }</p>
+              </blockquote>
 
      
           </div>

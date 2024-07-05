@@ -62,7 +62,6 @@ const Dashboard =()=>{
             </div>
 
           </div>
-
         {/* Content with all the task for the day*/}
         <div className=" basis-1/5">
             <div className="grid grid-cols-1 w-full overflow-scroll">
@@ -117,13 +116,12 @@ const Dashboard =()=>{
 
       </div>
 
-      <div className="relative col-span-1 h-full ">
+    </main>
+   
+    <div className="relative col-span-1 h-full ">
         <ProfilSideBar/>
       </div>
 
-    </main>
-   
-      
     </div>
    
 
