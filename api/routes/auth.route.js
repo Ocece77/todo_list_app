@@ -4,7 +4,7 @@ import { authMiddleware } from '../middleware/auth.js'
 
 const authRoutes = express.Router()
 
-authRoutes.get("/login" , login )
+authRoutes.post("/login" , login )
 authRoutes.post("/sign"  , sign )
 
 export default authRoutes
