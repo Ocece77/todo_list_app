@@ -70,8 +70,6 @@ const TodayTask = () =>{
          if (!res.ok){
           console.error('problem with updating the note')
          }
-         const data = await res.json()
-         console.log(data)
          getTask()
       } catch(err){
         console.error(err)

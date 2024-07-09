@@ -82,7 +82,6 @@ const Settings = ()=>{
 
   const handleChange =(e)=>{
     setForm({...form , [e.currentTarget.id] : e.currentTarget.value})
-    console.log(form)
   }
 
   //open delete account modal
@@ -100,7 +99,7 @@ const Settings = ()=>{
 
           <div className="flex flex-col gap-1">
             <label htmlFor="username" className="ms-1 text-sm text-neutral-400">username</label>
-            <input maxLength={30} type="text" name="username" id="username" defaultValue={currentUser.username} className="border border-neutral-300 px-3 py-1" onChange={handleChange}  />
+            <input maxLength={30} type="text" name="username" id="username" defaultValue={currentUser.username} className="border border-neutral-300 px-3 py-1" onChange={handleChange} disabled={currentUser.email =="example@account.com" }  />
           </div>
 
           <div className="flex flex-col gap-1">
