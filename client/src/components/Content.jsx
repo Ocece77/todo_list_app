@@ -49,7 +49,7 @@ const Content =()=>{
          <div>
          {/*only visible on tablet or mobile screen */}
          <picture className=' md:hidden w-full flex justify-center py-14'>
-             <source srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/270c_fe0f/512.webp" type="image/webp"/>
+            <source srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/270c_fe0f/512.webp" type="image/webp"/>
             <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/270c_fe0f/512.gif" alt="✌" width={200} height={200}/>
         </picture>
         {/*only visible on laptop screen */}

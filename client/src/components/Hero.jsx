@@ -13,7 +13,7 @@ const Hero =()=>{
 
       <em className="font-light text-sm ">Your tools to keep <span className="font-bold not-italic">everything</span>  fine</em>
       
-      <h1 className="capitalize tracking-[.03em] leading-tight  pe-10 lg:pe-0 text-5xl md:text-6xl lg:text-8xl animate-slide-in -z-30">
+      <h1 className="capitalize tracking-[.03em] leading-tight  pe-10 lg:pe-0 text-5xl md:text-6xl lg:text-8xl animate-slide-in -z-30 text-start">
         taking <span className="font-bold bg-amber-400 px-3 italic">notes</span> for those who forget
        </h1>
 

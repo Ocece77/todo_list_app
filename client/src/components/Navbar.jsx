@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
       <nav className="z-10 fixed top-0  cursor-default  w-full flex justify-between p-2 pt-10 md:p-10  ">
         {/*login and sign button */}
         <div className="flex">
-          <Link className="border border-amber-400 p-2 pe-5 md:px-5 md:py-2 rounded-s-2xl text-amber-400  hover:border-0 hover:bg-black hover:text-white transition-all" to='/login'>Log in</Link>
+          <Link className="border border-amber-400 p-2 pe-5 md:px-5 md:py-2 rounded-s-2xl text-amber-400  hover:border-0 hover:bg-black hover:text-white transition-all bg-white" to='/login'>Log in</Link>
           <Link className=" animate-slide-in-reverse bg-amber-400 p-2 md:px-5 md:py-2 rounded-2xl -ms-3 hover:bg-black hover:text-white transition-all" to="/sign">Sign Up</Link>
         </div>
 
