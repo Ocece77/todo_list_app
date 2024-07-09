@@ -10,6 +10,15 @@ export default ({ command, mode }) => {
   return defineConfig({
     reactStrictMode: false,
     plugins: [react()],
+    server: {
+      proxy: {
+        '/api': {
+          target: env.VITE_API_KEY,
+          changeOrigin: true,
+          secure: true,
+        },
+      },
+    },
     define: {
       'process.env.VITE_QUOTE_API_KEY': JSON.stringify(env.VITE_QUOTE_API_KEY),
       'process.env.VITE_EMAIL_EXAMPLE': JSON.stringify(env.VITE_EMAIL_EXAMPLE),
