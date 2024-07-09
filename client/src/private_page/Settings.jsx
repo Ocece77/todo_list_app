@@ -27,7 +27,7 @@ const Settings = ()=>{
      
   
     try {
-      const res = await fetch(`http://localhost:3000/api/user/put/${currentUser._id}`, {
+      const res = await fetch(`/api/user/put/${currentUser._id}`, {
         method: 'PUT',
         body: JSON.stringify({
           username: form.username,
@@ -59,7 +59,7 @@ const Settings = ()=>{
   const deleteUser = async ()=>{
     dispatch(deleteUserStart())
    try {
-     const res = await fetch(`http://localhost:3000/api/user/delete/${currentUser._id}`, {
+     const res = await fetch(`/api/user/delete/${currentUser._id}`, {
        method: 'DELETE',
        headers: {
          'Authorization': `Bearer ${currentUser.token}`,

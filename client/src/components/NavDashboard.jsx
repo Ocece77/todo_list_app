@@ -25,7 +25,7 @@ const NavDashboard =()=>{
 const getTask = async () =>{
 
   try{
-   const res = await fetch(`http://localhost:3000/api/task/get`, 
+   const res = await fetch(`/api/task/get`, 
    { signal : controller.signal}
    );
      
@@ -46,7 +46,7 @@ const getTask = async () =>{
 
 useEffect(()=>{
   getTask()
-}, [taskList])
+}, [])
 
 
   return(

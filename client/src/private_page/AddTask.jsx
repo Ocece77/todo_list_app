@@ -29,7 +29,7 @@ const AddTask = () =>{
   e.preventDefault()
   
   try{
-   const res = await fetch(`http://localhost:3000/api/task/post`, 
+   const res = await fetch(`/api/task/post`, 
    {
      method : 'POST',
      body : JSON.stringify(form),

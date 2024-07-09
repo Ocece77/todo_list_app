@@ -33,7 +33,7 @@ const AllTask = () =>{
   const createTask = async (e) =>{
     e.preventDefault()
     try{
-     const res = await fetch(`http://localhost:3000/api/task/post`, 
+     const res = await fetch(`/api/task/post`, 
      {
        method : 'POST',
        body : JSON.stringify(form),
@@ -65,7 +65,7 @@ const AllTask = () =>{
   const getTask = async () =>{
 
     try{
-     const res = await fetch(`http://localhost:3000/api/task/get`, 
+     const res = await fetch(`/api/task/get`, 
      { signal : controller.signal}
      );
        
@@ -89,7 +89,7 @@ const AllTask = () =>{
     }
 
     try{
-      const res = await fetch(`http://localhost:3000/api/task/put/${task.taskId}`, 
+      const res = await fetch(`/api/task/put/${task.taskId}`, 
        {method : "PUT",
         headers:{
           'Content-Type' : 'application/json',
@@ -116,7 +116,7 @@ const AllTask = () =>{
     e.preventDefault(); 
     const taskId = e.currentTarget.parentElement.parentElement.id
     try{
-      const res = await fetch(`http://localhost:3000/api/task/delete/${taskId}`, 
+      const res = await fetch(`/api/task/delete/${taskId}`, 
        {method : "DELETE",
         headers : {
         'Content-Type' : 'application/json',
@@ -149,7 +149,7 @@ const AllTask = () =>{
   //update the task completed status
   const completedTask = async (taskId , completedStatus) =>{
     try{
-      const res = await fetch(`http://localhost:3000/api/task/put/${taskId}`, 
+      const res = await fetch(`/api/task/put/${taskId}`, 
        {method : "PUT",
         headers:{
           'Content-Type' : 'application/json',
@@ -174,7 +174,7 @@ const AllTask = () =>{
   //pin the task
   const pinnedTask = async (taskId , pinnedStatus) =>{
     try{
-      const res = await fetch(`http://localhost:3000/api/task/put/${taskId}`, 
+      const res = await fetch(`/api/task/put/${taskId}`, 
        {method : "PUT",
         headers:{
           'Content-Type' : 'application/json',
