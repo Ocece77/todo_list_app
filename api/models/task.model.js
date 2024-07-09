@@ -16,13 +16,15 @@ const taskSchema =  mongoose.Schema({
     type: String,
     required: true
   },
+
   completed:{
     type:Boolean,
-    required: true
+    default:false
   },
   
   isPinned:{
-    type:Boolean
+    type:Boolean,
+    default:false
   },
   
   userId:{

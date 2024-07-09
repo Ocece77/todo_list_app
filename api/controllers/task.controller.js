@@ -2,7 +2,7 @@ import Task from '../models/task.model.js'
 
 
 //get all the tasks
-export const getTasks = async (req, res, next)=>{
+export const getTasks = async (req, res)=>{
   try{
     await Task.find()
      .then((tasks)=> res.status(200).json(tasks))
@@ -13,12 +13,11 @@ export const getTasks = async (req, res, next)=>{
 }
 
 //post a task
-export const postTask = async (req, res, next)=>{
-  const {id} = req.params
+export const postTask = async (req, res)=>{
   try{
    const newTask = new Task({
       ...req.body,
-      taskId : id
+      userId: req.user.userId
     })
     newTask.save()
     .then((task)=> res.status(201).json(task))
@@ -29,7 +28,7 @@ export const postTask = async (req, res, next)=>{
 }
 
 //update a task
-export const putTask = async (req, res, next)=>{
+export const putTask = async (req, res)=>{
   const {id} = req.params
   try{
     await Task.findByIdAndUpdate(id , {$set:{...req.body} } ,{new: true})
@@ -41,9 +40,8 @@ export const putTask = async (req, res, next)=>{
 }
 
 //delete a task
-export const deleteTask = async (req, res, next)=>{
+export const deleteTask = async (req, res)=>{
   const {id} = req.params
-
   try{
     await Task.findByIdAndDelete(id)
     .then((task)=> res.status(200).json(task))

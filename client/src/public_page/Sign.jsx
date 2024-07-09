@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
+import { accountCreatedFailed, accountCreatedSuccess } from "../redux/userSlice";
+import { useDispatch } from "react-redux";
 
-const Sign =()=>{
+
+const Sign = () => {
 
   const [resErr, setResErr] = useState(null)
   const [loading , isLoading] = useState(null)
+  const [passwordError , setPasswordError] = useState(null)
   const [form , setForm] = useState({
     firstname:"",
     lastname:"",
@@ -12,15 +16,20 @@ const Sign =()=>{
     email:'',
     password:''
   })
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
   setForm({ ...form, [e.currentTarget.id] : e.currentTarget.value.trim() })
-  console.log(JSON.stringify(form))
   }
 
   const createUser = async (e) => {
     e.preventDefault();
+    if(form.password.length < 4 ){
+      setPasswordError(true)
+      return;
+    }
     isLoading(true)
     try{
       const res = await fetch("http://localhost:3000/api/auth/sign",{
@@ -28,37 +37,47 @@ const Sign =()=>{
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
        })
+
        if (!res.ok){
         console.error("The account already exist")
         setResErr(true)
+        dispatch(accountCreatedFailed())
+
        } else{
         setResErr(false)
         navigate("/login")
+        dispatch(accountCreatedSuccess())
        }
-       isLoading(false)
 
     } catch (e){
       console.error(e)
+    }finally {
+      isLoading(false);
     }
   }
 
 
+
   return(
     <>
-    <div className="pt-10 ">
+    <div className="pt-10 cursor-fancy ">
         <div className="flex flex-col justify-center  items-center w-full  gap-y-10">
             <h1 className="text-5xl">Sign<span className="text-white bg-black italic px-5 rounded-full font-bold">Up</span></h1>
              <p className="text-center ">You have an <span className="text-amber-500 italic underline">account</span> <br /> <Link to="/login" className="italic hover:underline">Click here to connect right <span className="bg-amber-300 px-1 font-bold">now</span> !</Link></p>
-            <form onSubmit={createUser} className="flex flex-col gap-y-6 w-full items-center md:px-0  px-16 ">
-              <input required onChange={handleChange} id='firstname' name="firstname" type="text" className="border rounded-lg w-full md:w-1/2 lg:w-1/3 py-3  ps-4"  placeholder="firstname *" />
-              <input required onChange={handleChange} id='lastname'  name="lastname" type="text" className="border rounded-lg w-full md:w-1/2 lg:w-1/3 py-3  ps-4"  placeholder="lastname *" />
-              <input required onChange={handleChange} id='username'  name="username" type="text" className="border rounded-lg w-full md:w-1/2 lg:w-1/3 py-3  ps-4"  placeholder="username *" />
-              <input required onChange={handleChange} id='email'  name="email" type="email" className="border rounded-lg  w-full md:w-1/2 lg:w-1/3 py-3  ps-4"  placeholder="e-mail *" />
-              <input required onChange={handleChange} id='password'  name="password" type="password" className="border rounded-lg  w-full md:w-1/2 lg:w-1/3 py-3  ps-4"  placeholder="password *" />
+            <form method='POST' onSubmit={createUser} className="flex flex-col gap-y-6 w-full items-center md:px-0  px-16 ">
+              <input required onChange={handleChange} id='firstname' name="firstname" type="text" className="border rounded-lg w-full md:w-1/2 lg:w-1/3 py-3  ps-4" maxLength={30} placeholder="firstname *" />
+              <input required onChange={handleChange} id='lastname'  name="lastname" type="text" className="border rounded-lg w-full md:w-1/2 lg:w-1/3 py-3  ps-4" maxLength={30} placeholder="lastname *" />
+              <input required onChange={handleChange} id='username'  name="username" type="text" className="border rounded-lg w-full md:w-1/2 lg:w-1/3 py-3  ps-4" maxLength={30} placeholder="username *" />
+              <input required onChange={handleChange} id='email'  name="email" type="email" className="border rounded-lg  w-full md:w-1/2 lg:w-1/3 py-3  ps-4" maxLength={50} placeholder="e-mail *" />
+              <input required onChange={handleChange} id='password'  name="password" type="password" className="border rounded-lg  w-full md:w-1/2 lg:w-1/3 py-3  ps-4" minLength={5}  placeholder="password *" />
+             
+             { passwordError && <div className="mt-2 bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg p-4 dark:bg-red-800/10 dark:border-red-900 dark:text-red-500" role="alert">
+                <span className="font-bold">Password</span> The pasword should have at least 8 characters
+              </div>}
+
               <div className="flex flex-col gap-y-3">
-                <button type="button" className="font-bold border border-amber-400 text-amber-400 rounded-lg py-2 px-3 hover:bg-black hover:border-0 hover:text-white transition-all">Connected with the example account</button>
                 <button type="submit" className="font-bold hover:bg-amber-400 hover:border-2 border-black rounded-lg py-2 px-3 bg-black  text-white transition-all">
-                  <span className={`${loading ? "hidden" : "inline"}`}>Sign Up </span>
+                  <span className={`${loading ? "hidden" : "inline"} niceday-text text-lg`}>Sign Up </span>
                  
                 <div role="status">
                     <svg aria-hidden="true" className={`${loading ? "inline" : "hidden"} w-8 h-8 text-gray-100 animate-spin dark:text-gray-200 fill-amber-400`} viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

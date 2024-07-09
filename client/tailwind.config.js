@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      cursor: {
+        'fancy': 'url(hand.cur), pointer',
+      },
       keyframes: {
         pop: {
           '0%': { transform: 'scale(0)' },

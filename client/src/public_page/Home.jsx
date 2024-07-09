@@ -2,7 +2,6 @@ import AnimatedCursor from "react-animated-cursor"
 import Content from "../components/Content"
 import Hero from "../components/Hero"
 import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
 
 const Home =()=>{
  return(

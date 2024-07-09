@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import taskRoutes from "./routes/task.route.js";
 import authRoutes from "./routes/auth.route.js";
 import cookieParser from 'cookie-parser';
-import { authMiddleware } from "./middleware/auth.js";
+import userRoutes from "./routes/user.route.js";
 
 
 dotenv.config();
@@ -19,14 +19,19 @@ mongoose.connect(process.env.MONGO)
 .then(()=> console.log("db has been succesfuly connected"))
 
 app.use(express.json())
+
 app.use(cors())
+
 app.use(cookieParser());
 
 app.use("/api/task" , taskRoutes )
 app.use("/api/auth" , authRoutes )
+app.use("/api/user" , userRoutes )
+
 
 app.listen(PORT , ()=>{
 console.log("Listening on" , PORT)
+
 })
 
 export default app

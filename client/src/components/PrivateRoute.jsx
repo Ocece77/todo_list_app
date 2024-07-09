@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { PropTypes } from "prop-types";
+import { useSelector } from "react-redux";
 
  const PrivateRoute = () =>{
-  const [isConnected , setIsConnected] = useState(true)
-  return isConnected ? <Outlet/>  : <Navigate to="/login"/>
+  const currentUser = useSelector(state => state.user)
+  return currentUser.currentUser ? <Outlet/>  : <Navigate to="/login"/>
 }
 
 PrivateRoute.propTypes={

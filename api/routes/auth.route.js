@@ -1,6 +1,5 @@
 import express from 'express'
 import { login, sign } from '../controllers/auth.controller.js'
-import { authMiddleware } from '../middleware/auth.js'
 
 const authRoutes = express.Router()
 
