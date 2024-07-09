@@ -136,7 +136,6 @@ const AllTask = () =>{
   const handleTaskUpdate = (e)=>{
     const currentTaskId = e.currentTarget.closest('form').id;//prend l'id du form le plus "proche"
     setTask({...task , taskId :  currentTaskId ,[e.currentTarget.id] : e.currentTarget.value})
-   console.log(task)
   }
 
 
