@@ -1,4 +1,4 @@
-import { useEffect , useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import  {signInFailure, signInStart, signInSuccess } from "../redux/userSlice";
@@ -20,6 +20,7 @@ const Login = () => {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.currentTarget.id]: e.currentTarget.value.trim() });
+    console.log(form)
   };
 
   const controller = new AbortController();
@@ -77,10 +78,6 @@ const Login = () => {
     inputPassword.value = process.env.VITE_PASSWORD_EXAMPLE
     setForm({email : process.env.VITE_EMAIL_EXAMPLE , password: process.env.VITE_PASSWORD_EXAMPLE })
   }
-
-  useEffect(() => {
-  
-  }, []);
 
   return(
     <>
