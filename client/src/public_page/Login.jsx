@@ -20,7 +20,6 @@ const Login = () => {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.currentTarget.id]: e.currentTarget.value.trim() });
-    console.log(form)
   };
 
   const controller = new AbortController();
