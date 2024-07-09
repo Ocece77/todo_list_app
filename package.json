@@ -5,8 +5,8 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "install-server": "cd api && npm run install-server",
-    "start-server": "cd api && npm run start-server",
+    "install-server": "cd api && npm i ",
+    "start-server": "cd api && nodemon app.js",
     "install-client" : "cd client && npm i",
     "start-client" : "cd client && npm run deploy",
     "start": "nodemon api/app.js",

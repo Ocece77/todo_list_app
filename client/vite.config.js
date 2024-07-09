@@ -13,7 +13,8 @@ export default ({ command, mode }) => {
     define: {
       'process.env.VITE_QUOTE_API_KEY': JSON.stringify(env.VITE_QUOTE_API_KEY),
       'process.env.VITE_EMAIL_EXAMPLE': JSON.stringify(env.VITE_EMAIL_EXAMPLE),
-      'process.env.VITE_PASSWORD_EXAMPLE': JSON.stringify(env.VITE_PASSWORD_EXAMPLE)
+      'process.env.VITE_PASSWORD_EXAMPLE': JSON.stringify(env.VITE_PASSWORD_EXAMPLE),
+      'process.env.VITE_API_KEY': JSON.stringify(env.VITE_API_KEY)
     },
   });
 };
