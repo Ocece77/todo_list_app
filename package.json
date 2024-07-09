@@ -5,7 +5,10 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon api/app.js",
+    "install-server": "cd api && npm run install-server",
+    "start-server": "cd api && npm run start-server",
+    "install-client" : "cd client && npm i",
+    "start-client" : "cd client && npm run deploy",
     "start": "nodemon api/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
