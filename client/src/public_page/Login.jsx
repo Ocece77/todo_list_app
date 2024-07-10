@@ -41,7 +41,6 @@ const Login = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
         signal: controller.signal,
-        credential : true
       });
 
       const data = await res.json();

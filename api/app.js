@@ -6,7 +6,10 @@ import taskRoutes from "./routes/task.route.js";
 import authRoutes from "./routes/auth.route.js";
 import cookieParser from 'cookie-parser';
 import userRoutes from "./routes/user.route.js";
+import helmet from "helmet";
 
+import path from 'path'
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -19,8 +22,11 @@ mongoose.connect(process.env.MONGO)
 .then(()=> console.log("db has been succesfuly connected"))
 
 app.use(express.json())
-
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+app.use(express.static(path.join(__dirname,'../client/dist')))
 app.use(cors())
+app.use(helmet());
 
 app.use(cookieParser());
 
@@ -30,7 +36,7 @@ app.use("/api/user" , userRoutes )
 
 
 app.listen(PORT , ()=>{
-console.log("Listening on" , PORT)
+console.log("Listening on" , PORT , )
 
 })
 
