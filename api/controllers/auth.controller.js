@@ -47,9 +47,18 @@ export const sign = async (req, res, next) => {
   }
 };
 
-export const logout =async (req, res, next )=>{
-  const cookies = req.cookies
-  if (!cookies?.jwt) return res.sendStatus(204)
-    res.clearCookie('jwt' , {httpOnly:true , sameSite: 'None' , secure : true})
-  res.json({message : 'coookie cleared'})
-}
+export const logout = async (req, res, next) => {
+  const cookies = req.cookies;
+
+  // If there's no jwt cookie, just return 204 No Content
+  if (!cookies?.jwt) return res.sendStatus(204);
+
+  // Clear the cookie by setting its expiry date to the past
+  res.clearCookie('jwt', {
+    httpOnly: true,  // Ensures the cookie is sent only via HTTP requests, not client-side JavaScript
+    sameSite: 'None',  // Allows cross-site requests (necessary for cross-origin cookies)
+    secure: true,  // Ensures the cookie is sent only over HTTPS (recommended in production)
+  });
+
+  res.json({ message: 'Cookie cleared, logged out' });
+};

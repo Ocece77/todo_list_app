@@ -7,7 +7,7 @@ import authRoutes from "./routes/auth.route.js";
 import cookieParser from 'cookie-parser';
 import userRoutes from "./routes/user.route.js";
 import helmet from "helmet";
-
+import { body, validationResult } from 'express-validator';
 import path from 'path'
 import { fileURLToPath } from "url";
 

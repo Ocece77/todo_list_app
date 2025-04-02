@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { accountCreatedFailed, accountCreatedSuccess } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
-
+import DOMPurify from 'dompurify';
 
 const Sign = () => {
 
@@ -21,7 +21,8 @@ const Sign = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-  setForm({ ...form, [e.currentTarget.id] : e.currentTarget.value.trim() })
+    const sanitizedValue = DOMPurify.sanitize(e.currentTarget.value.trim());
+    setForm({ ...form, [e.currentTarget.id] : sanitizedValue })
   }
 
   const createUser = async (e) => {

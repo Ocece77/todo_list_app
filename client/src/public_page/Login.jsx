@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import  {signInFailure, signInStart, signInSuccess } from "../redux/userSlice";
+import DOMPurify from 'dompurify';
 
 
 
@@ -19,8 +20,10 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.currentTarget.id]: e.currentTarget.value.trim() });
+    const sanitizedValue = DOMPurify.sanitize(e.currentTarget.value.trim());
+    setForm({ ...form, [e.currentTarget.id]: sanitizedValue });
   };
+
 
   const controller = new AbortController();
 

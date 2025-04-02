@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom"
 import { addTaskDefault, addTaskFailed, addTaskSuccess } from "../redux/taskSlice";
+import DOMPurify from 'dompurify';
 
 const AddTask = () =>{
 
@@ -21,7 +22,8 @@ const AddTask = () =>{
   })
 
   const handleChange = (e)=>{
-    setForm({...form , [e.currentTarget.id] : e.currentTarget.value.trim()})
+    const sanitizedValue = DOMPurify.sanitize(e.currentTarget.value.trim());
+    setForm({...form , [e.currentTarget.id] : sanitizedValue})
   }
 
  //create a new task 
